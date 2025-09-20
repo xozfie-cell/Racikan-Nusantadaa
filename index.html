@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Racikan Nusantara</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Domine&family=Larsseit&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #F59393;
+      color: #FFFFFF;
+      font-family: 'Larsseit', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: rgba(255 255 255 / 0.3);
+      color: #FFFFFF;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      font-family: 'Larsseit', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    button:hover,
+    button:focus {
+      background-color: rgba(255 255 255 / 0.5);
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em 0;
+      font-family: 'Domine', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    header .search-button {
+      background-color: transparent;
+      border: 2px solid #FFFFFF;
+      padding: 0.3em 0.7em;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: 'Larsseit', sans-serif;
+    }
+    header .search-button:hover,
+    header .search-button:focus {
+      background-color: #FFFFFF;
+      color: #F59393;
+      outline: none;
+    }
+
+    /* Main Banner Section */
+    .main-banner {
+      margin-bottom: 2em;
+    }
+    .main-banner .image-wrapper {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: #e0a0a0;
+      margin-bottom: 1em;
+    }
+    .main-banner .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+    }
+    .main-banner .description {
+      font-family: 'Larsseit', sans-serif;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Two sections with image and text side by side */
+    .two-sections {
+      display: flex;
+      gap: 1em;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+    .two-sections > div {
+      flex: 1 1 48%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    .two-sections .image-wrapper {
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #e0a0a0;
+    }
+    .two-sections .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .two-sections .text {
+      font-family: 'Larsseit', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    /* Text section with quote */
+    .quote-section {
+      font-family: 'Larsseit', sans-serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 2em;
+      padding: 0 0.5em;
+    }
+
+    /* Text + image + button section */
+    .text-image-button {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+    .text-image-button .image-wrapper {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #e0a0a0;
+    }
+    .text-image-button .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .text-image-button button {
+      align-self: center;
+      max-width: 200px;
+    }
+
+    /* Carousel Section */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 2em;
+      border-radius: 16px;
+      background-color: #e0a0a0;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: #c08080;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+    }
+
+    /* Text image with two parts text + button */
+    .text-image-two-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+    .text-image-two-texts .image-wrapper {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #e0a0a0;
+    }
+    .text-image-two-texts .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .text-image-two-texts .texts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      font-family: 'Larsseit', sans-serif;
+      font-size: 1rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .text-image-two-texts button {
+      align-self: center;
+      max-width: 200px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-family: 'Larsseit', sans-serif;
+      font-size: 0.9rem;
+      padding: 1em 0;
+      border-top: 1px solid rgba(255 255 255 / 0.3);
+      margin-top: 2em;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 400px) {
+      header {
+        font-size: 1.3rem;
+      }
+      .two-sections {
+        flex-direction: column;
+      }
+      .two-sections > div {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header>
+      <div>RACIKAN NUSANTARA</div>
+      <button class="search-button" aria-label="Search">Search</button>
+    </header>
+
+    <!-- Main Banner Section -->
+    <section class="main-banner" aria-label="Main banner">
+      <div class="image-wrapper">
+        <img src="https://via.placeholder.com/360x480?text=Main+Banner" alt="Main banner image" />
+      </div>
+      <p class="description">
+        Racikan Nusantara adalah brand yang mengusung cita rasa tradisional dengan sentuhan modern, menghadirkan kelezatan autentik dari berbagai daerah di Indonesia.
+      </p>
+    </section>
+
+    <!-- Two sections with image and text -->
+    <section class="two-sections" aria-label="Two image and text sections">
+      <div>
+        <div class="image-wrapper">
+          <img src="https://via.placeholder.com/360x480?text=Section+1" alt="Section 1 image" />
+        </div>
+        <p class="text">
+          Kami menggunakan bahan-bahan alami dan resep turun-temurun untuk menjaga kualitas dan rasa yang otentik.
+        </p>
+      </div>
+      <div>
+        <div class="image-wrapper">
+          <img src="https://via.placeholder.com/360x480?text=Section+2" alt="Section 2 image" />
+        </div>
+        <p class="text">
+          Setiap produk kami dibuat dengan penuh cinta dan perhatian untuk memberikan pengalaman terbaik bagi pelanggan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section" aria-label="Quote">
+      berpikir keras dan hasil pun mengkhianati
+    </section>
+
+    <!-- Text image with button -->
+    <section class="text-image-button" aria-label="Text image with button">
+      <div class="image-wrapper">
+        <img src="https://via.placeholder.com/360x480?text=Text+Image+Button" alt="Text image with button" />
+      </div>
+      <button onclick="window.open('https://www.racikannusantara.com', '_blank', 'noopener')">Kunjungi Website</button>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-container" aria-label="Image carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+1" alt="Slide 1" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+2" alt="Slide 2" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+3" alt="Slide 3" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+4" alt="Slide 4" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+5" alt="Slide 5" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://via.placeholder.com/1920x1080?text=Slide+6" alt="Slide 6" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Text image with two texts and button -->
+    <section class="text-image-two-texts" aria-label="Text image with two texts and button">
+      <div class="image-wrapper">
+        <img src="https://via.placeholder.com/360x480?text=Text+Image+Two+Texts" alt="Text image with two texts" />
+      </div>
+      <div class="texts">
+        <p>Bagian atas teks yang menjelaskan sesuatu yang penting.</p>
+        <p>Bagian bawah teks yang melengkapi informasi sebelumnya.</p>
+      </div>
+      <button onclick="window.open('https://www.racikannusantara.com/info', '_blank', 'noopener')">Pelajari Lebih Lanjut</button>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; Racikan Nusantara 2025
+  </footer>
+
+  <script>
+    // Carousel auto slider
+    (function () {
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const slideCount = slides.length;
+      let currentIndex = 0;
+
+      function goToSlide(index) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        goToSlide(currentIndex);
+      }
+
+      // Auto slide every 3 seconds
+      setInterval(nextSlide, 3000);
+    })();
+  </script>
+</body>
+</html>
